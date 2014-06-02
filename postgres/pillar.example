@@ -1,0 +1,10 @@
+postgres:
+  user:
+    name: lazarus
+    password: toluw7Me
+    createdb: True
+  database:
+    name: project_lazarus
+    owner: lazarus
+  extensions:
+    - postgis

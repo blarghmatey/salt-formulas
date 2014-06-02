@@ -1,0 +1,2 @@
+postgis:
+  maintenance_db: template1

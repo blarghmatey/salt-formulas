@@ -1,0 +1,34 @@
+{% set nginx = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': [
+            'mercurial',
+            'build-essential',
+            'libssl-dev',
+            'libpcre3-dev',
+            'libxslt1-dev',
+            'libgeoip-dev'
+        ]
+    },
+    'RedHat': {
+        'pkgs': [
+            'mercurial',
+            'gcc',
+            'make',
+            'openssl-devel',
+            'geoip-devel',
+            'libpcre3-devel',
+            'xslt-devel'
+        ]
+    },
+    'Arch': {
+        'pkgs': [
+            'mercurial',
+            'gcc',
+            'make',
+            'geoip',
+            'pcre',
+            'openssl',
+            'libxslt'
+        ]
+    }
+}, merge=salt['pillar.get']('nginx:lookup')) %}

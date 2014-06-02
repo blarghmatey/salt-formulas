@@ -1,0 +1,37 @@
+{% set pyenv = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': [
+            'git',
+            'build-essential',
+            'curl',
+            'libsqlite3-dev',
+            'zlib1g-dev',
+            'libbz2-dev',
+            'libreadline6-dev'
+        ]
+    },
+    'RedHat': {
+        'pkgs': [
+            'git',
+            'gcc',
+            'make',
+            'curl',
+            'libsqlite3-devel',
+            'libzlib-devel',
+            'libbz2-devel',
+            'readline-devel'
+        ]
+    },
+    'Arch': {
+        'pkgs': [
+            'git',
+            'gcc',
+            'make',
+            'curl',
+            'sqlite',
+            'bzip2',
+            'zlib',
+            'readline'
+        ]
+    }
+}, merge=salt['pillar.get']('pyenv:lookup')) %}

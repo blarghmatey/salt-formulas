@@ -1,0 +1,6 @@
+app:
+  git_repo: https://bitbucket.org:blarghmatey/project_lazarus
+  app_name: project_lazarus
+  git_rev: master
+  deploy_key: vcs_repo_private_key
+  requirements_path: /home/deploy/project_lazarus/requirements.txt

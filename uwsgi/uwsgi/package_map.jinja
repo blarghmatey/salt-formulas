@@ -1,0 +1,31 @@
+{% set uwsgi = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': [
+            'git',
+            'build-essential',
+            'libssl-dev',
+            'libpcre3-dev',
+            'python-dev'
+        ]
+    },
+    'RedHat': {
+        'pkgs': [
+            'git',
+            'gcc',
+            'make',
+            'openssl-devel',
+            'python-devel',
+            'libpcre3-devel'
+        ]
+    },
+    'Arch': {
+        'pkgs': [
+            'git',
+            'gcc',
+            'make',
+            'python',
+            'pcre',
+            'openssl'
+        ]
+    }
+}, merge=salt['pillar.get']('uwsgi:lookup')) %}
