@@ -15,7 +15,7 @@ uwsgi_source:
 
 uwsgi_compile:
   cmd.run:
-    - name: {{python}} uwsgiconfig.py --build
+    - name: {{python}} uwsgiconfig.py --build {{ salt['pillar.get']('uwsgi:build_params', '') }}
     - cwd: /usr/local/uwsgi/
     - unless: /usr/local/bin/uwsgi --version | grep {{ salt['pillar.get']('uwsgi:version', '2.0.1') }}
     - require:
