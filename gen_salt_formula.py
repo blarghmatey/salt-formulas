@@ -42,5 +42,5 @@ with open('{0}/{0}/package_map.jinja'.format(formula_name), 'w') as pkg:
 
 with open('{0}/{0}/init.sls'.format(formula_name), 'w') as init:
     init.write(
-'''{{% from "{0}/package_map.jinja" import nginx with context %}}
+'''{{% from "{0}/package_map.jinja" import {0} with context %}}
 '''.format(formula_name))
