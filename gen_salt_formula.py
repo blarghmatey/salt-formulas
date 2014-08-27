@@ -9,7 +9,7 @@ parser.add_argument('--state', dest='is_state', type=bool, default=False)
 parser.add_argument('formula_name', nargs='+', type=str)
 
 args = parser.parse_args()
-formula_name = ('-').join(args.formula_name)
+formula_name = ('_').join(args.formula_name)
 
 if len(formula_name) == 0:
     print("Please provide a formula name")
@@ -25,10 +25,10 @@ for path in path_names:
     os.makedirs(path, mode=0o755, exist_ok=True)
 
 if args.is_state:
-    file_names = ['{0}/init.sls', '{0}/package_map.jinja']
+    file_names = ['{0}/init.sls', '{0}/map.jinja']
 else:
     file_names = ['{0}/pillar.example', '{0}/README.rst', '{0}/VERSION',
-                  '{0}/{0}/init.sls', '{0}/{0}/package_map.jinja']
+                  '{0}/{0}/init.sls', '{0}/{0}/map.jinja']
 
 for fname in file_names:
     os.mknod(fname.format(formula_name), mode=0o644)
@@ -57,5 +57,5 @@ with open(file_names[-1].format(formula_name), 'w') as pkg:
 
 with open(file_names[-2].format(formula_name), 'w') as init:
     init.write(
-'''{{% from "{0}/package_map.jinja" import {0} with context %}}
+'''{{% from "{0}/map.jinja" import {0} with context %}}
 '''.format(formula_name))
